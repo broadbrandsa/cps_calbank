@@ -21,12 +21,12 @@ export function Hero() {
         sizes="100vw"
         className="-z-20 object-cover object-center [filter:saturate(0.95)_contrast(1.04)_brightness(0.6)] scale-[1.06]"
       />
-      {/* Multi-layer dark + CPS brand-tint overlay (blue top-right, purple bottom-left) */}
+      {/* Multi-layer dark + CalBank brand-tint overlay (gold top-right, navy wash) */}
       <div
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(900px 600px at 82% 12%, rgba(19,162,217,0.26), transparent 60%), radial-gradient(720px 600px at 8% 95%, rgba(144,19,254,0.24), transparent 60%), linear-gradient(100deg, rgba(10,12,28,0.92) 0%, rgba(10,12,28,0.72) 45%, rgba(10,12,28,0.5) 100%), linear-gradient(0deg, rgba(10,12,28,0.88) 0%, transparent 42%)",
+            "radial-gradient(900px 600px at 82% 12%, rgba(253,211,0,0.22), transparent 60%), radial-gradient(720px 600px at 8% 95%, rgba(43,53,80,0.42), transparent 60%), linear-gradient(100deg, rgba(20,26,40,0.92) 0%, rgba(20,26,40,0.72) 45%, rgba(20,26,40,0.5) 100%), linear-gradient(0deg, rgba(20,26,40,0.9) 0%, transparent 42%)",
         }}
       />
 

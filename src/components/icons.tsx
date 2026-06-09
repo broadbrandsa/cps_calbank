@@ -32,6 +32,13 @@ export const ArrowRight = (p: IconProps) => (
   </Base>
 );
 
+export const Lock = (p: IconProps) => (
+  <Base {...p}>
+    <rect x="5" y="11" width="14" height="9" rx="2" />
+    <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+  </Base>
+);
+
 export const ChevronDown = (p: IconProps) => (
   <Base {...p} strokeWidth={2}>
     <path d="m6 9 6 6 6-6" />

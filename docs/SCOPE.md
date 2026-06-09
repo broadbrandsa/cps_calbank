@@ -34,12 +34,25 @@
 4. **Assurance and accreditation** — recognition, measurement, and badges.
 5. **The next steps** — shared contact section.
 
+## Access gate
+
+- A soft passcode gate sits in front of the whole site (both pages). On first
+  visit the reader sees a full-bleed lock screen and enters the access code
+  (`0224`). A correct code unlocks and is remembered in `localStorage`, so it
+  does not re-prompt.
+- A **Hide** button in the top navigation re-locks the proposal (clears the
+  unlock flag and reloads), so a presenter can hide the content on screen.
+- This is a soft gate, not real authentication. It keeps the proposal out of
+  casual view; it is not a security boundary. The code and storage key live in
+  `src/lib/lock.ts`.
+
 ## What is excluded
 
 - No CMS or admin. Content lives in `src/content/proposal.ts`.
 - No forms or lead capture in this build. The CTAs are `mailto:` and `tel:` links
   plus on-page anchors. A form can be added later (see `TRACKING_PLAN.md`).
-- No authentication, gating, or per-client logins.
+- No server-side authentication or per-client logins (the access gate above is
+  a client-side soft gate only).
 - No blog, no additional programme detail pages, no downloadable PDF in this
   build.
 - No CalBank-supplied brand assets. The site uses a text "Prepared for CalBank"

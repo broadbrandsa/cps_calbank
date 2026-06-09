@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { navMenus } from "@/content/proposal";
-import { ChevronDown } from "@/components/icons";
+import { ChevronDown, Lock } from "@/components/icons";
+import { lockProposal } from "@/lib/lock";
 import { cn } from "@/lib/utils";
 
 export function Nav() {
@@ -116,6 +117,15 @@ export function Nav() {
               />
             </span>
           </span>
+          <button
+            type="button"
+            onClick={lockProposal}
+            className="hidden items-center gap-1.5 rounded-full border border-white/15 px-3.5 py-2 text-[13px] text-white/75 transition-colors duration-100 hover:bg-white/10 hover:text-white sm:inline-flex"
+            aria-label="Hide the proposal and lock it"
+          >
+            <Lock className="size-3.5" />
+            Hide
+          </button>
           <Link href="/#contact" className="btn-yellow !px-4 !py-2.5 !text-[13px]">
             Talk to CPS
           </Link>
@@ -160,6 +170,14 @@ export function Nav() {
                 </div>
               </div>
             ))}
+            <button
+              type="button"
+              onClick={lockProposal}
+              className="mt-1 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-[15px] text-white/80"
+            >
+              <Lock className="size-4" />
+              Hide proposal
+            </button>
           </div>
         </nav>
       )}

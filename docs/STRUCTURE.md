@@ -20,6 +20,7 @@ calbank-academy-of-trusted-advisors/
 │   │   └── why-cps/page.tsx    # the Why CPS page
 │   ├── components/
 │   │   ├── icons.tsx           # CPS-style inline SVG icon set (Lucide-style)
+│   │   ├── lock-screen.tsx     # passcode access gate (wraps the app in layout)
 │   │   ├── reveal.tsx          # scroll-reveal wrapper (respects reduced motion)
 │   │   ├── section-heading.tsx # eyebrow + heading + lede
 │   │   ├── sections/           # one file per page section
@@ -27,6 +28,7 @@ calbank-academy-of-trusted-advisors/
 │   ├── content/
 │   │   └── proposal.ts         # ALL copy and data lives here
 │   └── lib/
+│       ├── lock.ts             # access code + storage key + lockProposal()
 │       └── utils.ts            # cn() class helper
 ├── components.json             # shadcn config
 ├── next.config.ts
@@ -62,5 +64,8 @@ calbank-academy-of-trusted-advisors/
 - **Images** live in `public/images/`. Reference them by absolute path (for
   example `/images/photos/hero-bg.jpg`).
 - **Brand colours and tokens** are defined once in `globals.css` under `:root`.
-  The site leads with the native CPS palette, so there is no scoped client
-  re-skin.
+  The **home page** is wrapped in a `.calbank-theme` scope that retunes the
+  palette to CalBank gold (`#FDD300`), a warm off-white canvas (`#F6F5F2`), white,
+  and CalBank navy accents. The **Why CPS page** keeps the native CPS palette
+  (blue, purple, yellow), so it reads as the CPS story. Surface and brand tokens
+  are CSS variables, which is what makes the scoped re-skin possible.

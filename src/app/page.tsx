@@ -11,7 +11,7 @@ import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <>
+    <div className="calbank-theme flex min-h-full flex-1 flex-col">
       <a href="#challenge" className="sr-only focus:not-sr-only">
         Skip to content
       </a>
@@ -27,6 +27,6 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

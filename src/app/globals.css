@@ -44,11 +44,11 @@
   --color-ink: var(--ink);
   --color-ink-1: var(--ink-1);
 
-  /* CPS surfaces */
-  --color-surface-0: #ffffff;
-  --color-surface-1: #f6f7fb;
-  --color-surface-2: #eef0f6;
-  --color-surface-card: #f4f5fa;
+  /* CPS surfaces — reference raw vars so a scope (e.g. .calbank-theme) can retune them */
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-card: var(--surface-card);
 
   /* Fonts (wired through next/font in layout.tsx) */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -115,15 +115,61 @@
   --line: rgba(10, 12, 28, 0.1);
   --line-2: rgba(10, 12, 28, 0.18);
 
+  /* surfaces (referenced by --color-surface-* above) */
+  --surface-0: #ffffff;
+  --surface-1: #f6f7fb;
+  --surface-2: #eef0f6;
+  --surface-card: #f4f5fa;
+
   /* section-dark is parametrised so a scope can re-skin it */
   --sd-bg: linear-gradient(160deg, #0a0c1c 0%, #0b0f1f 100%);
   --sd-glow-1: rgba(19, 162, 217, 0.16);
   --sd-glow-2: rgba(144, 19, 254, 0.16);
 }
 
-/* CalBank proposal leads with the native CPS palette (blue, purple, yellow),
-   so no scoped brand re-skin is applied. The default tokens above carry the
-   whole site. */
+/* ============================================================
+   CALBANK THEME — scoped re-skin for the home page.
+   Applied via .calbank-theme on the home page wrapper. Retunes the
+   palette to CalBank gold (#FDD300), a warm off-white canvas (#F6F5F2),
+   and white, with CalBank navy as the supporting accent. The Why CPS
+   page keeps the native CPS palette.
+   ============================================================ */
+.calbank-theme {
+  /* canvas: white + warm off-white sections */
+  --surface-0: #ffffff;
+  --surface-1: #f6f5f2;
+  --surface-2: #efece6;
+  --surface-card: #faf9f6;
+
+  /* gold is the single CTA / highlight colour */
+  --cps-yellow: #fdd300;
+  --cps-yellow-warm: #ffdf4d;
+
+  /* CalBank navy + gold replace the CPS blue/purple accents.
+     The "deep" tokens are tuned to read on white (WCAG AA). */
+  --cps-blue: #2a3550;
+  --cps-blue-deep: #243043; /* AA navy for text/icons on white */
+  --cps-blue-bright: #fdd300; /* gold accent on dark navy surfaces */
+  --cps-purple: #8a6a00; /* bronze-gold, readable on white */
+  --cps-purple-bright: #ffdf4d;
+
+  --ring: #2a3550;
+
+  /* CTA glow tuned to gold */
+  --shadow-cps-cta: 0 12px 24px -8px rgba(253, 211, 0, 0.5);
+
+  /* section-dark becomes CalBank navy with gold glows */
+  --sd-bg: linear-gradient(160deg, #1b2436 0%, #131a28 100%);
+  --sd-glow-1: rgba(253, 211, 0, 0.16);
+  --sd-glow-2: rgba(253, 211, 0, 0.08);
+}
+/* Gradient accent: CalBank navy to gold on light, bright gold on dark. */
+.calbank-theme .gradient-accent {
+  background-image: linear-gradient(100deg, #243043 0%, #b8860b 100%);
+}
+.calbank-theme .gradient-accent.warm {
+  background-image: linear-gradient(100deg, #fdd300 0%, #ffb300 100%);
+}
 
 @layer base {
   * {
@@ -350,8 +396,42 @@
   transform: none;
 }
 
+/* ---- Access gate (LockScreen) ---- */
+.lock-overlay {
+  animation: lockFadeIn 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.lock-shake {
+  animation: lockShake 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+.lock-exiting {
+  animation: lockFadeOut 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes lockFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes lockShake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-10px); }
+  30% { transform: translateX(10px); }
+  45% { transform: translateX(-8px); }
+  60% { transform: translateX(8px); }
+  75% { transform: translateX(-4px); }
+  90% { transform: translateX(4px); }
+}
+@keyframes lockFadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  60% { opacity: 0.9; transform: scale(1.02); }
+  100% { opacity: 0; transform: scale(1.05); pointer-events: none; }
+}
+@keyframes unlockStep {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .btn-yellow:hover, .liquid-glass:hover { transform: none; box-shadow: none; }
+  .lock-overlay, .lock-shake, .lock-exiting { animation: none; }
 }
