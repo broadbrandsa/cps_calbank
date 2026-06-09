@@ -6,7 +6,9 @@ import {
   challengeNarrative,
   challengeQuote,
 } from "@/content/proposal";
-import { Quote } from "@/components/icons";
+import { Quote, TrendingUp, Network, Repeat, Users } from "@/components/icons";
+
+const behaviourIcons = [TrendingUp, Network, Repeat, Users];
 
 export function Challenge() {
   return (
@@ -42,19 +44,27 @@ export function Challenge() {
           </h3>
         </Reveal>
         <div className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {behaviouralChallenge.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={(i % 4) * 60}
-              className="flex flex-col rounded-3xl border border-border bg-white p-6"
-            >
-              <span className="font-mono text-sm font-semibold text-cps-purple">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h4 className="mt-3 text-base font-semibold leading-snug text-ink">{item.title}</h4>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
-            </Reveal>
-          ))}
+          {behaviouralChallenge.map((item, i) => {
+            const Icon = behaviourIcons[i % behaviourIcons.length];
+            return (
+              <Reveal
+                key={item.title}
+                delay={(i % 4) * 60}
+                className="flex flex-col rounded-3xl border border-border bg-white p-6"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="inline-flex size-11 items-center justify-center rounded-2xl bg-cps-blue/10 text-cps-blue-deep">
+                    <Icon className="size-5" />
+                  </span>
+                  <span className="font-mono text-sm font-semibold text-cps-purple">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h4 className="mt-4 text-base font-semibold leading-snug text-ink">{item.title}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+              </Reveal>
+            );
+          })}
         </div>
 
         {/* Narrative + quote */}

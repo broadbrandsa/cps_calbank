@@ -248,6 +248,7 @@ export const tracks = [
       "An express relationship management programme for bankers serving the SME segment, focused on solutioning excellence and portfolio growth.",
     banker: {
       price: "R 17 840",
+      amount: 17840,
       unit: "per banker",
       cohort: "Minimum cohort of 20",
       includes:
@@ -255,6 +256,7 @@ export const tracks = [
     },
     leader: {
       price: "R 2 510",
+      amount: 2510,
       unit: "per line manager",
       cohort: "Runs in parallel with the banker cohort",
       includes:
@@ -270,6 +272,7 @@ export const tracks = [
       "A relationship management programme for bankers managing business, commercial, and corporate portfolios, building strategic, solution-led client engagement.",
     banker: {
       price: "R 17 270",
+      amount: 17270,
       unit: "per banker",
       cohort: "Minimum cohort of 20",
       includes:
@@ -277,6 +280,7 @@ export const tracks = [
     },
     leader: {
       price: "R 2 510",
+      amount: 2510,
       unit: "per line manager",
       cohort: "Runs in parallel with the banker cohort",
       includes:
@@ -398,6 +402,12 @@ export const trustPoints = [
   { stat: "30 000+", label: "Successful graduates across financial services." },
   { stat: "4 800", label: "Active learners on the CPS Learn platform." },
   { stat: "Award-winning", label: "Three-year winner of the BANKSETA Skills Development awards." },
+];
+
+/** B-BBEE ownership, shown as donut rings. */
+export const ownership = [
+  { value: 57, label: "Black ownership" },
+  { value: 32, label: "Black women ownership" },
 ];
 
 export const whyCpsNarrative = [

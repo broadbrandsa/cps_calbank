@@ -1,7 +1,7 @@
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { transitions, competencies } from "@/content/proposal";
-import { Check } from "@/components/icons";
+import { Check, ArrowRight } from "@/components/icons";
 
 /** A subtle accent per transition, cycling through the CPS palette. */
 const accents = [
@@ -10,6 +10,36 @@ const accents = [
   { tab: "bg-cps-purple/10 text-cps-purple", num: "text-cps-purple/40" },
   { tab: "bg-cps-blue/12 text-cps-blue-deep", num: "text-cps-blue/40" },
 ];
+
+const shortNames = ["Client-centric", "Problem-solver", "Value-creator", "Value-conversationist"];
+
+/** A horizontal progression rail: capable banker, through four shifts, to trusted advisor. */
+function ProgressionRail() {
+  return (
+    <Reveal className="mt-12 rounded-3xl border border-border bg-white p-6 md:p-7">
+      <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-3">
+        <span className="rounded-full bg-surface-2 px-4 py-2 text-[13px] font-medium text-ink">
+          Capable banker
+        </span>
+        {transitions.map((t, i) => (
+          <div key={t.n} className="flex items-center gap-2">
+            <ArrowRight className="size-4 shrink-0 text-cps-blue/40" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-2 text-[13px] text-ink">
+              <span className="inline-flex size-5 items-center justify-center rounded-full bg-cps-blue/12 font-mono text-[11px] font-semibold text-cps-blue-deep">
+                {t.n}
+              </span>
+              {shortNames[i]}
+            </span>
+          </div>
+        ))}
+        <ArrowRight className="size-4 shrink-0 text-cps-yellow" />
+        <span className="rounded-full bg-ink px-4 py-2 text-[13px] font-semibold text-white">
+          Trusted advisor
+        </span>
+      </div>
+    </Reveal>
+  );
+}
 
 export function Transitions() {
   return (
@@ -26,7 +56,9 @@ export function Transitions() {
           lede="Each transition is a deliberate shift in how a banker thinks, behaves, and creates value. Together they turn a capable banker into a trusted advisor."
         />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <ProgressionRail />
+
+        <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {transitions.map((t, i) => {
             const a = accents[i % accents.length];
             return (

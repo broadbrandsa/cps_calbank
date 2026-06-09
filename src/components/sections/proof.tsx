@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { trustPoints, whyCpsNarrative, clientLogos } from "@/content/proposal";
+import { Donut } from "@/components/charts";
+import { trustPoints, whyCpsNarrative, clientLogos, ownership } from "@/content/proposal";
+
+const ownershipColors = ["text-cps-blue-deep", "text-cps-purple"];
 
 export function Proof() {
   return (
@@ -39,6 +42,35 @@ export function Proof() {
             ))}
           </Reveal>
         </div>
+
+        {/* Transformation — B-BBEE ownership */}
+        <Reveal className="mt-8 rounded-4xl border border-border bg-surface-card p-7 md:p-9">
+          <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+            <div>
+              <span className="eyebrow mb-4">
+                <span className="dot" />
+                Transformation
+              </span>
+              <h3 className="text-[clamp(20px,2.2vw,28px)] font-semibold leading-tight text-ink">
+                A Level 1 B-BBEE contributor you can partner with confidently
+              </h3>
+              <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted-foreground">
+                Working with CPS strengthens your own procurement and transformation scorecard, with
+                meaningful black and black women ownership behind the business.
+              </p>
+            </div>
+            <div className="flex justify-center gap-8 sm:gap-12">
+              {ownership.map((o, i) => (
+                <Donut
+                  key={o.label}
+                  value={o.value}
+                  label={o.label}
+                  className={ownershipColors[i % ownershipColors.length]}
+                />
+              ))}
+            </div>
+          </div>
+        </Reveal>
 
         {/* Client logos */}
         <Reveal className="mt-16">

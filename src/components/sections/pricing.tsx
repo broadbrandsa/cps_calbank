@@ -1,6 +1,9 @@
 import { Reveal } from "@/components/reveal";
 import { tracks } from "@/content/proposal";
 import { ArrowRight } from "@/components/icons";
+import { BarRow } from "@/components/charts";
+
+const MAX_FEE = 18000;
 
 export function Pricing() {
   return (
@@ -61,6 +64,46 @@ export function Pricing() {
             </Reveal>
           ))}
         </div>
+
+        {/* Investment at a glance */}
+        <Reveal className="mx-auto mt-6 max-w-5xl rounded-4xl border border-border bg-white p-7 md:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="mono">Per-delegate investment at a glance</p>
+            <div className="flex items-center gap-5 text-[12px] text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <span className="size-2.5 rounded-full bg-cps-yellow" /> Relationship managers
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="size-2.5 rounded-full bg-cps-blue" /> Line managers
+              </span>
+            </div>
+          </div>
+          <div className="mt-6 grid gap-x-10 gap-y-6 md:grid-cols-2">
+            {tracks.map((track) => (
+              <div key={track.id} className="space-y-3">
+                <p className="text-[13px] font-semibold text-ink">
+                  {track.name} <span className="text-muted-foreground">({track.badge})</span>
+                </p>
+                <BarRow
+                  label="Relationship managers"
+                  valueLabel={track.banker.price}
+                  pct={(track.banker.amount / MAX_FEE) * 100}
+                  barClassName="bg-cps-yellow"
+                />
+                <BarRow
+                  label="Line managers"
+                  valueLabel={track.leader.price}
+                  pct={(track.leader.amount / MAX_FEE) * 100}
+                  barClassName="bg-cps-blue"
+                />
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-[13px] leading-relaxed text-muted-foreground">
+            Enabling a line manager costs a fraction of a banker&apos;s programme, so the leader
+            journey that makes the learning stick is an affordable add to every cohort.
+          </p>
+        </Reveal>
 
         <Reveal className="mx-auto mt-10 max-w-2xl text-center">
           <p className="text-sm text-muted-foreground">
