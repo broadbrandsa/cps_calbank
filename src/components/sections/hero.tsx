@@ -14,12 +14,12 @@ export function Hero() {
   return (
     <section id="top" className="relative isolate flex min-h-[100svh] items-center overflow-hidden">
       <Image
-        src="/images/photos/hero-bg.jpg"
+        src="/images/photos/brooke-cagle.jpg"
         alt=""
         fill
         priority
         sizes="100vw"
-        className="-z-20 object-cover object-center [filter:saturate(0.95)_contrast(1.04)_brightness(0.6)] scale-[1.06]"
+        className="-z-20 object-cover object-[62%_center] [filter:saturate(0.95)_contrast(1.04)_brightness(0.62)] scale-[1.06]"
       />
       {/* Multi-layer dark + CalBank brand-tint overlay (gold top-right, navy wash) */}
       <div
