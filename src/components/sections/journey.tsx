@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Segmented } from "@/components/segmented";
 import {
   bankerJourney,
   bankerJourneyIntro,
@@ -76,28 +76,20 @@ export function Journey() {
         />
 
         <Reveal className="mt-12">
-          <Tabs defaultValue="banker" className="gap-6">
-            <TabsList className="h-auto flex-wrap gap-2 rounded-full bg-surface-1 p-1.5">
-              <TabsTrigger
-                value="banker"
-                className="h-auto rounded-full px-5 py-2.5 text-[13px] data-active:bg-ink data-active:text-white"
-              >
-                Banker journey
-              </TabsTrigger>
-              <TabsTrigger
-                value="leader"
-                className="h-auto rounded-full px-5 py-2.5 text-[13px] data-active:bg-ink data-active:text-white"
-              >
-                Leader enablement journey
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="banker">
-              <Timeline intro={bankerJourneyIntro} steps={bankerJourney} />
-            </TabsContent>
-            <TabsContent value="leader">
-              <Timeline intro={leaderJourneyIntro} steps={leaderJourney} />
-            </TabsContent>
-          </Tabs>
+          <Segmented
+            segments={[
+              {
+                id: "banker",
+                label: "Banker journey",
+                content: <Timeline intro={bankerJourneyIntro} steps={bankerJourney} />,
+              },
+              {
+                id: "leader",
+                label: "Leader enablement journey",
+                content: <Timeline intro={leaderJourneyIntro} steps={leaderJourney} />,
+              },
+            ]}
+          />
         </Reveal>
       </div>
     </section>

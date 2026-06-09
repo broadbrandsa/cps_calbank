@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Segmented } from "@/components/segmented";
 import { tracks } from "@/content/proposal";
 import { Check, Users, Compass } from "@/components/icons";
 
@@ -108,24 +108,15 @@ export function Tracks() {
         />
 
         <Reveal className="mt-12">
-          <Tabs defaultValue={tracks[0].id} className="gap-6">
-            <TabsList className="mx-auto h-auto flex-wrap gap-2 rounded-full bg-white p-1.5 shadow-[var(--shadow-cps-sm)]">
-              {tracks.map((t) => (
-                <TabsTrigger
-                  key={t.id}
-                  value={t.id}
-                  className="h-auto rounded-full px-5 py-2.5 text-[13px] data-active:bg-ink data-active:text-white"
-                >
-                  {t.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {tracks.map((t) => (
-              <TabsContent key={t.id} value={t.id}>
-                <TrackPanel track={t} />
-              </TabsContent>
-            ))}
-          </Tabs>
+          <Segmented
+            align="center"
+            className="w-full"
+            segments={tracks.map((t) => ({
+              id: t.id,
+              label: t.name,
+              content: <TrackPanel track={t} />,
+            }))}
+          />
         </Reveal>
       </div>
     </section>

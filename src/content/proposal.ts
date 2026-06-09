@@ -19,10 +19,11 @@ export const academy = {
 
 export const contact = {
   name: "Dr Indira Bhagaloo",
-  role: "Chief Executive Officer, CPS",
+  role: "CEO, Cornerstone Performance Solutions",
+  mobile: "+27 83 400 7082",
   phone: "+27 11 789 1957",
   website: "www.cps.co.za",
-  email: "succeed@cps.co.za",
+  email: "indirab@cps.co.za",
   address: "39 Grove Street, Randburg, Johannesburg, Gauteng, South Africa",
   quote:
     "Skills development is the cornerstone of economic empowerment and societal progress, paving the way for a more prosperous and inclusive South Africa.",

@@ -1,8 +1,9 @@
 import { Reveal } from "@/components/reveal";
 import { contact } from "@/content/proposal";
-import { Phone, Mail, Globe, MapPin, Quote, ArrowRight } from "@/components/icons";
+import { Phone, Smartphone, Mail, Globe, MapPin, Quote, ArrowRight } from "@/components/icons";
 
 const details = [
+  { icon: Smartphone, label: "Mobile", value: contact.mobile, href: `tel:${contact.mobile.replace(/\s/g, "")}` },
   { icon: Phone, label: "Office", value: contact.phone, href: `tel:${contact.phone.replace(/\s/g, "")}` },
   { icon: Mail, label: "Email", value: contact.email, href: `mailto:${contact.email}` },
   { icon: Globe, label: "Web", value: contact.website, href: `https://${contact.website}` },
