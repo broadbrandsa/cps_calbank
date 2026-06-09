@@ -1,0 +1,357 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   CPS DESIGN SYSTEM — Tailwind v4 theme
+   Ported from the CPS Design System (read-only source of truth).
+   Brand CI is fixed: blue / purple / yellow / dark grey.
+   Surfaces + text are tuned for WCAG AA contrast on a light canvas.
+   ============================================================ */
+@theme inline {
+  /* shadcn semantic tokens (mapped to CPS values in :root below) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* CPS brand CI — exposed as Tailwind utilities (bg-cps-blue, text-cps-purple…).
+     These reference raw vars so a scope (e.g. .sb-theme) can retune them. */
+  --color-cps-blue: var(--cps-blue);
+  --color-cps-purple: var(--cps-purple);
+  --color-cps-yellow: var(--cps-yellow);
+  --color-cps-dark: var(--cps-dark);
+  --color-cps-blue-bright: var(--cps-blue-bright);
+  --color-cps-purple-bright: var(--cps-purple-bright);
+  --color-cps-yellow-warm: var(--cps-yellow-warm);
+  --color-cps-blue-deep: var(--cps-blue-deep);
+  --color-ink: var(--ink);
+  --color-ink-1: var(--ink-1);
+
+  /* CPS surfaces */
+  --color-surface-0: #ffffff;
+  --color-surface-1: #f6f7fb;
+  --color-surface-2: #eef0f6;
+  --color-surface-card: #f4f5fa;
+
+  /* Fonts (wired through next/font in layout.tsx) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Radii — CPS scale */
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-4xl: 28px;
+
+  /* Shadows */
+  --shadow-cps-sm: 0 8px 20px -8px rgba(10, 12, 28, 0.12);
+  --shadow-cps-md: 0 20px 40px -16px rgba(10, 12, 28, 0.12);
+  --shadow-cps-lg: 0 24px 64px -12px rgba(10, 12, 28, 0.18);
+  --shadow-cps-cta: 0 12px 24px -8px rgba(255, 230, 0, 0.45);
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.2, 0.65, 0.3, 0.95);
+}
+
+/* ---- shadcn token values, retuned to CPS ---- */
+:root {
+  --radius: 0.875rem; /* 14px — CPS r-lg */
+
+  --background: #ffffff;
+  --foreground: #0a0c1c;
+  --card: #ffffff;
+  --card-foreground: #0a0c1c;
+  --popover: #ffffff;
+  --popover-foreground: #0a0c1c;
+
+  /* Primary action = CPS ink (dark, elegant); the hero CTA uses .btn-yellow */
+  --primary: #0a0c1c;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f5fa;
+  --secondary-foreground: #0a0c1c;
+  --muted: #f6f7fb;
+  --muted-foreground: rgba(10, 12, 28, 0.68);
+  --accent: #f6f7fb;
+  --accent-foreground: #0a0c1c;
+  --destructive: #b91c1c;
+
+  --border: rgba(10, 12, 28, 0.1);
+  --input: rgba(10, 12, 28, 0.18);
+  --ring: #13a2d9; /* CPS blue focus ring */
+
+  /* CPS raw tokens (the source the Tailwind colour utilities reference) */
+  --cps-blue: #13a2d9;
+  --cps-purple: #9013fe;
+  --cps-yellow: #ffff00;
+  --cps-dark: #4c4c4b;
+  --cps-blue-bright: #5eceff;
+  --cps-purple-bright: #b07cff;
+  --cps-yellow-warm: #ffec3c;
+  --cps-blue-deep: #0b6e94;
+  --ink: #0a0c1c;
+  --ink-1: #0b0f1f;
+  --muted-on-dark: rgba(255, 255, 255, 0.82);
+  --line: rgba(10, 12, 28, 0.1);
+  --line-2: rgba(10, 12, 28, 0.18);
+
+  /* section-dark is parametrised so a scope can re-skin it */
+  --sd-bg: linear-gradient(160deg, #0a0c1c 0%, #0b0f1f 100%);
+  --sd-glow-1: rgba(19, 162, 217, 0.16);
+  --sd-glow-2: rgba(144, 19, 254, 0.16);
+}
+
+/* CalBank proposal leads with the native CPS palette (blue, purple, yellow),
+   so no scoped brand re-skin is applied. The default tokens above carry the
+   whole site. */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv05", "ss01";
+    text-wrap: pretty;
+    -webkit-font-smoothing: antialiased;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+}
+
+/* ============================================================
+   CPS SIGNATURE UTILITIES
+   ============================================================ */
+
+/* ---- Container + section rhythm ---- */
+.cps-container {
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+
+/* ---- Mono label ---- */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(10, 12, 28, 0.58);
+}
+
+/* ---- Eyebrow — pill label above section headings ---- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(10, 12, 28, 0.68);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(10, 12, 28, 0.03);
+  border: 1px solid var(--line);
+}
+.eyebrow .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cps-blue);
+}
+.eyebrow.on-dark {
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.eyebrow.on-dark .dot {
+  background: var(--cps-yellow-warm);
+}
+
+/* ---- Gradient accent — the brand's signature italic phrase ---- */
+.gradient-accent {
+  font-style: italic;
+  background: linear-gradient(100deg, var(--cps-blue) 0%, var(--cps-purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* Italic glyphs overhang their box and get clipped under background-clip:text.
+     Pad the right edge to give them room; the negative margin keeps layout put. */
+  padding-inline-end: 0.12em;
+  margin-inline-end: -0.12em;
+}
+.gradient-accent.warm {
+  background: linear-gradient(100deg, var(--cps-yellow-warm) 0%, var(--cps-purple-bright, #b07cff) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Yellow primary CTA ---- */
+.btn-yellow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: var(--cps-yellow);
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-yellow:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-cps-cta);
+}
+.btn-yellow:active {
+  transform: translateY(0);
+  transition-duration: 0.08s;
+}
+
+/* ---- Liquid glass — translucent surface on dark / photo ---- */
+.liquid-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: none;
+  border-radius: 14px;
+  padding: 11px 20px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 13px;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%, rgba(255, 255, 255, 0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.liquid-glass:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Liquid glass card (for dark sections) ---- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---- Pills ---- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(10, 12, 28, 0.04);
+  color: rgba(10, 12, 28, 0.68);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--line);
+}
+.pill-blue { background: rgba(19, 162, 217, 0.12); color: var(--cps-blue-deep, #0b6e94); border-color: rgba(19, 162, 217, 0.3); }
+.pill-purple { background: rgba(144, 19, 254, 0.1); color: #6b0cc2; border-color: rgba(144, 19, 254, 0.3); }
+
+/* ---- Dark section — near-black gradient + brand glows + grid ---- */
+.section-dark {
+  position: relative;
+  color: #fff;
+  background:
+    radial-gradient(900px 500px at 85% 8%, var(--sd-glow-1), transparent 60%),
+    radial-gradient(800px 500px at 12% 92%, var(--sd-glow-2), transparent 60%),
+    var(--sd-bg);
+  overflow: hidden;
+}
+.section-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
+.section-dark > * { position: relative; }
+.section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4 { color: #fff; }
+.section-dark p { color: var(--muted-on-dark); }
+
+/* ---- Hairline divider ---- */
+.hairline { border-top: 1px solid var(--line); }
+
+/* ---- Scroll reveal (paired with the Reveal client component) ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease-soft), transform 0.6s var(--ease-soft);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn-yellow:hover, .liquid-glass:hover { transform: none; box-shadow: none; }
+}
