@@ -254,9 +254,10 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
   /* Italic glyphs overhang their box and get clipped under background-clip:text.
-     Pad the right edge to give them room; the negative margin keeps layout put. */
-  padding-inline-end: 0.12em;
-  margin-inline-end: -0.12em;
+     Pad the right edge to give them room (enough for the steep italic of a
+     trailing r/d at large heading sizes); the negative margin keeps layout put. */
+  padding-inline-end: 0.24em;
+  margin-inline-end: -0.24em;
   /* With tight heading line-heights the gradient paint box stops above the
      baseline, so descenders (p, g, y, j) lose their fill and look clipped.
      Extend the paint box downward and clone it per line so wrapped phrases

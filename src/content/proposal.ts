@@ -400,7 +400,7 @@ export const platformCapabilities = [
 /** Trust proof points. */
 export const trustPoints = [
   { stat: "Accredited", label: "Recognised and accredited by the relevant South African regulators." },
-  { stat: "30 000+", label: "Successful graduates across financial services." },
+  { stat: "30 000+", label: "Successful graduates." },
   { stat: "4 800", label: "Active learners on the CPS Learn platform." },
   { stat: "Award-winning", label: "Three-year winner of the BANKSETA Skills Development awards." },
 ];
@@ -427,8 +427,8 @@ export const accreditation = [
     body: "The relationship management programme is positioned for Category B on the skills development matrix, on endorsement from your verification agencies, thanks to its integrated assessment of theoretical and practical knowledge and workplace experience.",
   },
   {
-    title: "Measured for impact",
-    body: "Programme impact surveys measure shifts in mindset, behaviour, and application, giving you clear evidence of value and a measurable return on investment.",
+    title: "Integrated assessment",
+    body: "The programme is assessed through the Journey to Mastery, covering theoretical and practical knowledge and workplace application, with marking and reporting included.",
   },
   {
     title: "B-BBEE Level 1",

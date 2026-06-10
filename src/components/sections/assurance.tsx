@@ -20,11 +20,11 @@ export function Assurance() {
           eyebrow="Assurance and accreditation"
           title={
             <>
-              Recognised, measured, and{" "}
+              Recognised, applied, and{" "}
               <span className="gradient-accent">accredited</span>
             </>
           }
-          lede="CPS programmes are recognised by the relevant South African regulators, and every cohort is measured for behavioural shift and business impact, so you can see the return on the investment."
+          lede="CPS programmes are recognised by the relevant South African regulators, and the relationship management programme is assessed through the Journey to Mastery, covering theory, practice, and workplace application."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -54,11 +54,11 @@ export function Assurance() {
             </div>
             <div className="mt-7 border-t border-border pt-6">
               <p className="text-[15px] font-semibold text-ink">
-                The real return on learning is measured in changed behaviour, not information.
+                We design for behaviour that shows up in the work, not information recalled.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Programme impact surveys track shifts in mindset, behaviour, and application across the
-                cohort, linked back to the client value and portfolio outcomes that matter to CalBank.
+                Learning is applied in real client conversations and assessed through the Journey to
+                Mastery, so capability is demonstrated on the job, with marking and reporting included.
               </p>
             </div>
           </Reveal>
