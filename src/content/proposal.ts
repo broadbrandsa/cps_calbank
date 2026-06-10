@@ -412,7 +412,7 @@ export const ownership = [
 ];
 
 export const whyCpsNarrative = [
-  "In our 24 years, we have helped many organisations reach their strategic goals by building the adaptive skills the changing world demands. That experience shaped the methodologies, processes, and technology we use to design, develop, and deliver affordable learning at scale.",
+  "In more than 25 years, we have helped many organisations reach their strategic goals by building the adaptive skills the changing world demands. That experience shaped the methodologies, processes, and technology we use to design, develop, and deliver affordable learning at scale.",
   "CPS is a Level 1 B-BBEE contributor, with 57% black ownership and 32% black women ownership.",
 ];
 
