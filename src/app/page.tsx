@@ -2,10 +2,9 @@ import { Nav } from "@/components/sections/nav";
 import { Hero } from "@/components/sections/hero";
 import { Challenge } from "@/components/sections/challenge";
 import { Solution } from "@/components/sections/solution";
-import { Transitions } from "@/components/sections/transitions";
-import { Tracks } from "@/components/sections/tracks";
-import { Journey } from "@/components/sections/journey";
-import { Pricing } from "@/components/sections/pricing";
+import { Pathways } from "@/components/sections/pathways";
+import { Retail } from "@/components/sections/retail";
+import { Business } from "@/components/sections/business";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 
@@ -20,10 +19,9 @@ export default function Home() {
         <Hero />
         <Challenge />
         <Solution />
-        <Transitions />
-        <Tracks />
-        <Journey />
-        <Pricing />
+        <Pathways />
+        <Retail />
+        <Business />
         <Contact />
       </main>
       <Footer />

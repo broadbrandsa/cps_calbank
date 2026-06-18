@@ -4,10 +4,10 @@ import { ArrowRight } from "@/components/icons";
 
 export function Hero() {
   const meta = [
-    "Relationship management",
+    "Retail banking",
+    "Business banking",
     "Leader-led",
-    "Two programmes",
-    "Four transitions",
+    "Two pathways",
     "Powered by CPS Learn",
   ];
 
@@ -38,8 +38,8 @@ export function Hero() {
           </span>
 
           <h1 className="text-white text-[clamp(40px,6vw,76px)] font-semibold leading-[1.02] tracking-[-0.035em]">
-            The {academy.name}, activating{" "}
-            <span className="gradient-accent warm">relationship managers as trusted advisors</span>
+            The {academy.name}, building{" "}
+            <span className="gradient-accent warm">trusted advisors across retail and business banking</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-[clamp(17px,1.5vw,21px)] leading-relaxed text-white/82">
@@ -53,8 +53,8 @@ export function Hero() {
               Explore the opportunity
               <ArrowRight className="size-4" />
             </a>
-            <a href="#tracks" className="liquid-glass">
-              See the two programmes
+            <a href="#pathways" className="liquid-glass">
+              See the two pathways
             </a>
           </div>
 

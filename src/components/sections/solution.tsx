@@ -1,12 +1,7 @@
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
-import {
-  opportunityShift,
-  knowledgeToPerformance,
-  solutionIntro,
-  learningForImpact,
-} from "@/content/proposal";
-import { ArrowRight, Check } from "@/components/icons";
+import { opportunityShift, solutionIntro, learningForImpact } from "@/content/proposal";
+import { ArrowRight } from "@/components/icons";
 
 export function Solution() {
   return (
@@ -18,7 +13,7 @@ export function Solution() {
           title={
             <>
               From transactional banking to{" "}
-              <span className="gradient-accent warm">strategic, solution-led relationships</span>
+              <span className="gradient-accent warm">trusted, value-led advice</span>
             </>
           }
           lede={opportunityShift.body}
@@ -41,25 +36,6 @@ export function Solution() {
           </div>
         </Reveal>
 
-        {/* Knowledge to performance */}
-        <Reveal className="mt-14">
-          <p className="text-white/82">
-            By applying behavioural science and neuroscience, the programme bridges the gap between
-            knowledge and performance, so bankers can:
-          </p>
-          <ul className="mt-6 grid gap-3 md:grid-cols-2">
-            {knowledgeToPerformance.map((k) => (
-              <li
-                key={k}
-                className="flex gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-[15px] text-white/88"
-              >
-                <Check className="mt-0.5 size-4 shrink-0 text-cps-blue-bright" />
-                {k}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-
         {/* The solution + learning for impact */}
         <div className="mt-16 grid gap-10 border-t border-white/10 pt-14 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
@@ -68,7 +44,7 @@ export function Solution() {
               The solution
             </span>
             <h3 className="text-[clamp(24px,2.8vw,36px)] font-semibold leading-tight text-white">
-              A leader-led relationship management programme
+              One sales intervention, two segment pathways
             </h3>
             <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-white/78">
               {solutionIntro.map((p) => (

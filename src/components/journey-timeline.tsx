@@ -1,16 +1,10 @@
-import { SectionHeading } from "@/components/section-heading";
-import { Reveal } from "@/components/reveal";
-import { Segmented } from "@/components/segmented";
-import {
-  bankerJourney,
-  bankerJourneyIntro,
-  leaderJourney,
-  leaderJourneyIntro,
-} from "@/content/proposal";
-
 type Step = { n: number; title: string; detail: string };
 
-function Timeline({ intro, steps }: { intro: string; steps: readonly Step[] }) {
+/**
+ * A learning-journey timeline: a horizontal numbered milestone rail (lg+) above
+ * a detailed vertical step list. Shared by the retail and business pathways.
+ */
+export function JourneyTimeline({ intro, steps }: { intro: string; steps: readonly Step[] }) {
   return (
     <div className="rounded-4xl border border-border bg-white p-6 md:p-8">
       <p className="max-w-3xl text-[15px] leading-relaxed text-muted-foreground">{intro}</p>
@@ -50,48 +44,12 @@ function Timeline({ intro, steps }: { intro: string; steps: readonly Step[] }) {
               )}
             </div>
             <div className="pb-1">
-              <h3 className="text-base font-semibold leading-snug text-ink">{step.title}</h3>
+              <h4 className="text-base font-semibold leading-snug text-ink">{step.title}</h4>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.detail}</p>
             </div>
           </li>
         ))}
       </ol>
     </div>
-  );
-}
-
-export function Journey() {
-  return (
-    <section id="journey" className="py-24">
-      <div className="cps-container">
-        <SectionHeading
-          eyebrow="The learning journey"
-          title={
-            <>
-              Two parallel journeys that turn capability into{" "}
-              <span className="gradient-accent">sustained performance</span>
-            </>
-          }
-          lede="Bankers follow a journey to mastery while their line managers run a parallel enablement journey, so what is learned in the programme shows up in real client conversations."
-        />
-
-        <Reveal className="mt-12">
-          <Segmented
-            segments={[
-              {
-                id: "banker",
-                label: "Banker journey",
-                content: <Timeline intro={bankerJourneyIntro} steps={bankerJourney} />,
-              },
-              {
-                id: "leader",
-                label: "Leader enablement journey",
-                content: <Timeline intro={leaderJourneyIntro} steps={leaderJourney} />,
-              },
-            ]}
-          />
-        </Reveal>
-      </div>
-    </section>
   );
 }
